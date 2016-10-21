@@ -15,6 +15,7 @@
  * [X] Effects
  * [X] Clones
  * [X] Blocks
+ * [X] Data
  */
 
 
@@ -42,6 +43,7 @@ function projectjson (runtime) {
         target, effect, i = 0;
     json.name = 'new Project'; // No project name changing for now
     json.sprites = [];
+    json.data = {};
     for (target in runtime.targets) {
         if (!target.isOriginal) continue; // Don't save multiple copies
         var sprite = target.sprite, q,
@@ -95,6 +97,15 @@ function projectjson (runtime) {
         sprite.blocks._scripts.forEach(function(ID){
             json.sprites[i].scripts[ID] = blocks[ID];
         });
+        var oData, data;
+        if (target.isStage) oData = json.data;
+        else oData = json.sprites[i].data = {};
+        for (data in target.variables) {
+        	oData[data] = {type: 'variable', value: target.variables[data].value};
+        }
+        for (data in target.lists) {
+        	oData[data] = {type: 'list', value: target.lists[data].contents.slice(0)};
+        }
         ++i;
     }
     return JSON.stringify(json, null, 4);

@@ -34,7 +34,19 @@
           "isField": "true/false"
         }
       ],
-      "scripts": ["ID of top-level block"]
+      "scripts": ["ID of top-level block"],
+      "data": {
+        "name": {
+          "type": "variable/list",
+          "value": "any value (variable) or ['val1', 'val2', ...] (list)"
+        }
+      }
     }
-  ]
+  ],
+  "data": {
+    "name": {
+      "type": "variable/list",
+      "value": "any value (variable) or ['val1', 'val2', ...] (list)"
+    }
+  }
 }
