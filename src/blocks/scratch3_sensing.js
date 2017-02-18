@@ -170,12 +170,12 @@ Scratch3SensingBlocks.prototype.getAttributeOf = function (args) {
     return 0;
 };
 
-Scratch3SensingBlocks.prototype.askAndWait = function(args, util) {
+Scratch3SensingBlocks.prototype.askAndWait = function (args, util) {
     var answer = prompt(args.QUESTION);
     util.target.runtime.answer = answer;
 };
 
-Scratch3SensingBlocks.prototype.askAnswer = function() {
+Scratch3SensingBlocks.prototype.askAnswer = function (_, util) {
     return util.target.runtime.answer || '';
 };
 
